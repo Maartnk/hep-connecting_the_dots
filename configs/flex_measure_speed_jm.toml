@@ -1,0 +1,47 @@
+[experiment]
+name = "name"
+description = "description"
+
+[data]
+data_dir = "PATH_TO_DIRECTORY"
+test_file = "FILE_NAME.pt"
+test_helperfile = "FILE_NAME.pt"
+test_truthfile = "FILE_NAME.csv"
+dataloader_num_workers = 12
+num_classes = 5401
+
+[regressor_model]
+num_encoder_layers = 7
+embedding_size = 128
+nr_heads = 8
+in_size = 3
+out_size = 4
+latent_dim = 4
+hidden_dim = 256
+dropout = 0.1
+use_flashattn = true
+
+[model]
+checkpoint_path = "PATH_TO_FILE.pth"
+inputfeature_dim = 11
+num_heads = 4
+embed_dim = 128
+num_layers = 7
+dim_feedforward = 256
+dropout = 0.1
+use_flash_attention = true
+
+[training]
+batch_size = 32
+
+[output]
+base_path = "../results/"
+
+[logging]
+level = "INFO"
+measure_speed = true
+
+[wandb]
+entity = "USER_ENTITY"
+project_name = "project_name"
+run_name = "run_name"

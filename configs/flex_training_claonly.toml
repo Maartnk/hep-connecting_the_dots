@@ -1,0 +1,57 @@
+[experiment]
+name = "name"
+description = "description"
+
+[data]
+data_dir = "PATH_TO_DIRECTORY"
+train_file = "FILE_NAME.pt"
+val_file = "FILE_NAME.pt"
+test_file = "FILE_NAME.pt"
+test_helperfile = "FILE_NAME.pt"
+test_truthfile = "FILE_NAME.csv"
+dataloader_num_workers = 12
+num_classes = 5401
+
+[model]
+inputfeature_dim = 3
+num_heads = 8
+embed_dim = 128
+num_layers = 7
+dim_feedforward = 256
+dropout = 0.1
+use_flash_attention = true
+
+[training]
+batch_size = 32
+total_epochs = 101
+shuffle = false # whether training data should be shuffled
+start_from_scratch = true
+
+[training.scheduler]
+# type is only ReduceOnPlateau atm
+warmup_epochs = 5
+initial_lr = 1e-4
+target_lr = 1e-3
+mode = "min"
+factor = 0.5
+patience = 5
+verbose = true
+
+[training.early_stopping]
+patience = 50
+verbose = true
+
+
+[output]
+base_path = "../results/"
+
+[logging]
+level = "INFO"
+epoch_log_interval = 2
+model_save_interval = 50
+
+[wandb]
+entity = "USER_ENTITY"
+project_name = "project_name"
+run_name = "run_name"
+watch_interval = 50
